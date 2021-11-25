@@ -155,6 +155,11 @@ public interface DBPDataSourceContainer extends DBSObject, DBDFormatSettings, DB
     boolean isConnected();
 
     /**
+     * Checks whether this data source's connection is in progress or not.
+     */
+    boolean isConnecting();
+
+    /**
      * Connects to datasource.
      * This is sync method and returns after actual connection establishment.
      * @param monitor progress monitor

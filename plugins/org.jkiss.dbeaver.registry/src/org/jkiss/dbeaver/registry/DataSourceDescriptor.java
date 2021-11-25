@@ -757,6 +757,11 @@ public class DataSourceDescriptor
         return dataSource != null;
     }
 
+    @Override
+    public boolean isConnecting() {
+        return connecting;
+    }
+
     public boolean connect(DBRProgressMonitor monitor, boolean initialize, boolean reflect)
         throws DBException
     {

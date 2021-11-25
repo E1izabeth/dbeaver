@@ -47,6 +47,7 @@ import org.jkiss.dbeaver.ui.UITask;
 import org.jkiss.dbeaver.ui.UIUtils;
 import org.jkiss.dbeaver.ui.dialogs.ConnectionLostDialog;
 import org.jkiss.dbeaver.utils.GeneralUtils;
+import org.jkiss.dbeaver.utils.RuntimeUtils;
 import org.jkiss.utils.CommonUtils;
 
 import java.lang.reflect.InvocationTargetException;
@@ -221,6 +222,9 @@ public class DatabaseLazyEditorInput implements IDatabaseEditorInput, IPersistab
         while (!dataSourceContainer.isConnected()) {
             try {
                 dataSourceContainer.connect(monitor, true, true);
+                for (int i = 0; i < 100 && !dataSourceContainer.isConnected() && dataSourceContainer.isConnecting(); i++) {
+                    RuntimeUtils.pause(100);
+                }
             } catch (final DBException e) {
                 // Connection error
                 final Integer result = new UITask<Integer>() {
