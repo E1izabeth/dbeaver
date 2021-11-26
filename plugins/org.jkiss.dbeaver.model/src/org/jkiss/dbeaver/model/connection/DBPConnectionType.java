@@ -253,21 +253,11 @@ public class DBPConnectionType implements DBPDataSourcePermissionOwner {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof DBPConnectionType) {
-            DBPConnectionType ct = (DBPConnectionType)obj;
-            return CommonUtils.equalObjects(id, ct.id) &&
-                CommonUtils.equalObjects(name, ct.name) &&
-                CommonUtils.equalObjects(color, ct.color) &&
-                CommonUtils.equalObjects(description, ct.description) &&
-                autocommit == ct.autocommit &&
-                confirmExecute == ct.confirmExecute &&
-                confirmDataChange == ct.confirmDataChange &&
-                autoCloseTransactions == ct.autoCloseTransactions &&
-                predefined == ct.predefined &&
-                CommonUtils.equalObjects(connectionModifyRestrictions, ct.connectionModifyRestrictions);
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DBPConnectionType that = (DBPConnectionType) o;
+        return id.equals(that.id);
     }
 
     @Override
