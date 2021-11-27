@@ -41,6 +41,7 @@ public class DataExporterHTML extends StreamExporterAbstract {
 
     private static final String PROP_HEADER = "tableHeader";
     private static final String PROP_COLUMN_HEADERS = "columnHeaders";
+    private static final String PROP_HEADER_BACKGROUND_COLOR = "tableHeaderBgcolor";
 
     private String name;
     private static final int IMAGE_FRAME_SIZE = 200;
@@ -49,6 +50,7 @@ public class DataExporterHTML extends StreamExporterAbstract {
     private int rowCount = 0;
 
     private boolean outputHeader = true;
+    private String outputHeaderBgcolor = "#D0E3FA";
     private boolean outputColumnHeaders = true;
 
     @Override
@@ -57,6 +59,7 @@ public class DataExporterHTML extends StreamExporterAbstract {
 
         Map<String, Object> properties = site.getProperties();
         outputHeader = CommonUtils.getBoolean(properties.get(PROP_HEADER), outputHeader);
+        outputHeaderBgcolor = CommonUtils.toString(properties.get(PROP_HEADER_BACKGROUND_COLOR), outputHeaderBgcolor);
         outputColumnHeaders = CommonUtils.getBoolean(properties.get(PROP_COLUMN_HEADERS), outputColumnHeaders);
     }
 
@@ -85,7 +88,7 @@ public class DataExporterHTML extends StreamExporterAbstract {
             "border: thin solid #6495ed;" +
 //              "width: 50%;" +
             "padding: 5px;" +
-            "background-color: #D0E3FA;}" +
+            "background-color: "+ outputHeaderBgcolor +";}" +
             "td{font-family: sans-serif;" +
             "border: thin solid #6495ed;" +
 //              "width: 50%;" +
