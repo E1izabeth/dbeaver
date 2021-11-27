@@ -120,6 +120,7 @@
                 <propertyGroup label="%dataTransfer.processor.html.propertyGroup.general.label">
                     <property id="extension" label="%dataTransfer.processor.html.property.extension.label" defaultValue="html"/>
                     <property id="tableHeader" label="%dataTransfer.processor.html.property.header.name" type="boolean" description="%dataTransfer.processor.html.property.header.description" defaultValue="true"/>
+                    <property id="tableHeaderBgcolor" label="%dataTransfer.processor.html.property.header.bgcolor" features="hexcolor" description="%dataTransfer.processor.html.property.header.bgcolor.description" defaultValue="#D0E3FA"/>
                     <property id="columnHeaders" label="%dataTransfer.processor.html.property.columnHeaders.name" type="boolean" description="%dataTransfer.processor.html.property.columnHeaders.description" defaultValue="true"/>
                     <property id="extractImages" label="%dataTransfer.processor.html.property.images.name" type="boolean" description="%dataTransfer.processor.html.property.images.description" defaultValue="true"/>
                 </propertyGroup>

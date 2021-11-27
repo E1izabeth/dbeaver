@@ -135,6 +135,7 @@ public class DBConstants {
     public static final String PROP_FEATURE_LINK_POSSIBLE = "linkPossible";
     public static final String PROP_FEATURE_HREF = "href";
     public static final String PROP_FEATURE_VIEWABLE = "viewable";
+    public static final String PROP_FEATURE_HEXCOLOR = "hexcolor";
 
     public static final String LOCAL_DOMAIN_NAME = "local";
 }

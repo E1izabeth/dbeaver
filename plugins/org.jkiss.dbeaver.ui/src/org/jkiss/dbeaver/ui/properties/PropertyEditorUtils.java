@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.services.IServiceLocator;
 import org.jkiss.dbeaver.Log;
+import org.jkiss.dbeaver.model.DBConstants;
 import org.jkiss.dbeaver.model.DBPNamedObject;
 import org.jkiss.dbeaver.model.meta.IPropertyValueListProvider;
 import org.jkiss.dbeaver.model.meta.IPropertyValueValidator;
@@ -81,7 +82,11 @@ public class PropertyEditorUtils {
         }
         Class<?> propertyType = property.getDataType();
         if (propertyType == null || CharSequence.class.isAssignableFrom(propertyType)) {
-            if (property instanceof ObjectPropertyDescriptor && ((ObjectPropertyDescriptor) property).getLength() == PropertyLength.MULTILINE) {
+        	if (property.hasFeature(DBConstants.PROP_FEATURE_HEXCOLOR)) {
+        		CustomColorCellEditor editor = new CustomColorCellEditor(parent);
+        		editor.setDefaultValue(property.getDefaultValue());
+        		return editor;
+        	} else if (property instanceof ObjectPropertyDescriptor && ((ObjectPropertyDescriptor) property).getLength() == PropertyLength.MULTILINE) {
                 AdvancedTextCellEditor editor = new AdvancedTextCellEditor(parent);
                 setValidator(editor, property, object);
                 return editor;
